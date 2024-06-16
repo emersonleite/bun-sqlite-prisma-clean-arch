@@ -49,4 +49,8 @@ export default class UserRepositoryPrismaSqlite implements UserRepository {
       data: user,
     });
   }
+
+  deleteAllUsers(): Promise<any> {
+    return this.prisma.user.deleteMany({});
+  }
 }
