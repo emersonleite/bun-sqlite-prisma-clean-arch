@@ -7,4 +7,5 @@ export default interface UserRepository {
   fetchUserById(id: string): Promise<User | null>;
   deleteUserById(id: string): Promise<User | null>;
   updateUserById(id: string, user: User): Promise<User | null>;
+  deleteAllUsers(): Promise<any>;
 }
