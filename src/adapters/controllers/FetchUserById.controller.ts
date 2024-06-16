@@ -6,12 +6,22 @@ export default class FetchUserByIdController {
     server.get("/user/:id", async ({ set, params: { id } }) => {
       try {
         set.status = 201;
+
         set.headers["content-type"] = "application/json";
-        return await useCase.execute(id);
+
+        const response = await useCase.execute(id);
+
+        if (!response) {
+          return {
+            message: "User not found!",
+          };
+        }
+
+        return response;
       } catch (error) {
         set.status = 404;
+
         set.headers["content-type"] = "application/json";
-        // throw new Error("");
       }
     });
   }

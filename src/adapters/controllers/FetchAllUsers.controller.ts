@@ -6,12 +6,14 @@ export default class FetchAllUsersController {
     server.get("/users/all", async ({ set }) => {
       try {
         set.status = 201;
+
         set.headers["content-type"] = "application/json";
+
         return await useCase.execute();
       } catch (error) {
         set.status = 404;
+
         set.headers["content-type"] = "application/json";
-        // throw new Error("");
       }
     });
   }
