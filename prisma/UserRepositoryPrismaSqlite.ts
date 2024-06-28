@@ -9,16 +9,17 @@ export default class UserRepositoryPrismaSqlite implements UserRepository {
     this.prisma = new PrismaClient();
   }
 
+  /* TODO - alterar interface para parametro de entrada */
+  createUser(user: User): Promise<User> {
+    return this.prisma.user.create({ data: user });
+  }
+
   findByEmail(email: string): Promise<User | null> {
     return this.prisma.user.findUnique({
       where: {
         email,
       },
     });
-  }
-
-  createUser(user: User): Promise<User> {
-    return this.prisma.user.create({ data: user });
   }
 
   fetchAllUsers(): Promise<User[]> {

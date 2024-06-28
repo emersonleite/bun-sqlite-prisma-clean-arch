@@ -1,7 +1,7 @@
 import { Elysia } from "elysia";
 import CreateUserService from "./core/user/service/CreateUser.service";
 import CreateUserController from "./adapters/controllers/CreateUser.controller";
-import UserRepositoryPrismaSqlite from "./external/prisma/UserRepositoryPrismaSqlite";
+import UserRepositoryPrismaSqlite from "../prisma/UserRepositoryPrismaSqlite";
 import FetchAllUsersService from "./core/user/service/FetchAllUsers.service";
 import FetchAllUsersController from "./adapters/controllers/FetchAllUsers.controller";
 // import UserRepositoryMemory from "./external/memory/UserRepositoryMemory";
@@ -41,7 +41,7 @@ const deleteAllUsersService = new DeleteAllUsers(userRepository);
 new DeleteAllUsersController(elysia, deleteAllUsersService);
 
 //--- LISTEN ---
-elysia.listen(3000);
+elysia.listen(3001);
 console.log(
   `🦊 Elysia is running at ${elysia.server?.hostname}:${elysia.server?.port}`
 );
