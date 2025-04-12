@@ -4,7 +4,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.ts",
-    "dev2": "bun run --watch src2/server.ts",
+    "dev2": "bun run --watch src2/index.ts",
+    "start": "NODE_ENV=production bun src2/index.ts",
+    "build": "bun build src2/index.ts --outdir dist --minify",
     "generate": "bunx prisma generate --schema=./prisma/schema.prisma",
     "migrate": "bunx prisma migrate dev --name init --schema=./prisma/schema.prisma"
   },
