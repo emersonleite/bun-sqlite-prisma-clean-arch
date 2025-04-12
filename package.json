@@ -4,14 +4,20 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.ts",
-    "generate": "bunx prisma generate --schema=./src/external/prisma/schema.prisma",
-    "migrate": "bunx prisma migrate dev --name init --schema=./src/external/prisma/schema.prisma"
+    "dev2": "bun run --watch src2/server.ts",
+    "generate": "bunx prisma generate --schema=./prisma/schema.prisma",
+    "migrate": "bunx prisma migrate dev --name init --schema=./prisma/schema.prisma"
   },
   "dependencies": {
+    "@elysiajs/jwt": "^1.0.2",
     "@prisma/client": "5.12.1",
-    "elysia": "latest"
+    "@types/bcrypt": "^5.0.2",
+    "bcrypt": "^5.1.1",
+    "elysia": "latest",
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.6",
     "bun-types": "latest",
     "prisma": "^5.12.1"
   },
