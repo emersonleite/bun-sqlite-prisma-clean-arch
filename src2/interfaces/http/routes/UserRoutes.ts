@@ -30,18 +30,20 @@ const app = new Elysia();
 
 const userRoutes = (app: Elysia) => (
   app.post("/login", (ctx) => authControler.login(ctx)),
-  app.post("/verify", (ctx) => authControler.verifyToken(ctx))
+  app.post("/verify", (ctx) => authControler.verifyToken(ctx)),
+  /* Alterado abaixo para não necessitar estar logado para se cadastrar */
+  app.post("/users", (ctx) => userControler.createUser(ctx))
 );
 
-const protectRoutes = (app: Elysia) =>
-  app.post("/users", (ctx) => userControler.createUser(ctx));
+/* const protectRoutes = (app: Elysia) =>
+  app.post("/users", (ctx) => userControler.createUser(ctx)); */
 
 app.use(userRoutes).guard(
   {
     beforeHandle: async (ctx) =>
       await authMiddleware(ctx as Context, authService),
-  },
-  (app) => app.use(protectRoutes)
+  } /* ,
+  (app) => app.use(protectRoutes) */
 );
 
 export { app };
