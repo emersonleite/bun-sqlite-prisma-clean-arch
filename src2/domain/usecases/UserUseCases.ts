@@ -18,6 +18,8 @@ export class UserUseCases {
     name,
     password,
   }: InputCreateUserDto): Promise<OutputCreateUserDto | null> {
+    console.log(email, name, password);
+
     const user = await this.userRepository.findUserByEmail(email);
 
     if (!user) {
