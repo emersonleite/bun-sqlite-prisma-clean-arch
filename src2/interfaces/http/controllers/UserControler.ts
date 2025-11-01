@@ -10,6 +10,8 @@ export class UserController {
   ): Promise<OutputCreateUserDto | { message: string }> {
     const { name, email, password } = (await ctx.body) as InputCreateUserDto;
 
+    console.log(name, email, password);
+
     const user = await this.userUseCases.createUser({
       name,
       email,
